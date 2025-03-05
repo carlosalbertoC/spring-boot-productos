@@ -1,16 +1,23 @@
 package com.miempresa.miapp.models;
 
-public class Producto {
-    private Long id;
-    private String nombre;
-    private double precio;
+import jakarta.persistence.*;
 
-    // Constructor vacío (Spring lo necesita)
+@Entity
+@Table(name = "productos")
+public class Producto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
+    private Double precio;
+
+    // Constructor vacío
     public Producto() {}
 
     // Constructor con parámetros
-    public Producto(Long id, String nombre, double precio) {
-        this.id = id;
+    public Producto(String nombre, Double precio) {
         this.nombre = nombre;
         this.precio = precio;
     }
@@ -22,6 +29,6 @@ public class Producto {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public double getPrecio() { return precio; }
-    public void setPrecio(double precio) { this.precio = precio; }
+    public Double getPrecio() { return precio; }
+    public void setPrecio(Double precio) { this.precio = precio; }
 }
